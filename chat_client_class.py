@@ -58,8 +58,14 @@ class Client:
             my_msg = self.console_input.pop(0)
         if self.socket in read:
             peer_msg = self.recv()
-            peer_code = peer_msg[0]
-            peer_msg = peer_msg[1:]
+            code = ''
+            index = 0
+            for i in peer_msg:
+                if i.isdigit():
+                    code += i
+                    index += 1
+            peer_code = code
+            peer_msg = peer_msg[index:]
         return my_msg, peer_code, peer_msg
         
     def output(self):

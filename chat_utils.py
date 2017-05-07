@@ -11,9 +11,9 @@ M_SEARCH    = '6'
 M_LIST      = '7'
 M_POEM      = '8'
 M_TIME      = '9'
-
-#CHAT_IP = ''
-CHAT_IP = socket.gethostname()
+M_GAME = '10'
+CHAT_IP = ''
+#CHAT_IP = socket.gethostname()
 CHAT_PORT = 1112
 SERVER = (CHAT_IP, CHAT_PORT)
 
@@ -29,6 +29,7 @@ S_OFFLINE   = 0
 S_CONNECTED = 1
 S_LOGGEDIN  = 2
 S_CHATTING  = 3
+S_GAMING = 4
 
 SIZE_SPEC = 5
 

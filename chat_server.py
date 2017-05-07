@@ -82,8 +82,17 @@ class Server:
     def handle_msg(self, from_sock):
         #read msg code 
         msg = myrecv(from_sock)
+        pos = -1
         if len(msg) > 0:
-            code = msg[0]           
+            if len(msg) > 1:
+                for i in range(len(msg)):
+                    if not msg[i].isdigit():
+                        pos = i
+                        break
+                code = msg[0:pos]
+            else:
+                code = msg[0]
+
 #==============================================================================
 # handle connect request
 #==============================================================================
@@ -103,6 +112,24 @@ class Server:
                         mysend(to_sock, M_CONNECT + from_name)
                 else:
                     msg = M_CONNECT + 'no_user'
+                mysend(from_sock, msg)
+
+            elif code == M_GAME:
+                to_name = msg[2:]
+                from_name = self.logged_sock2name[from_sock]
+                if to_name == from_name:
+                    msg = M_GAME + 'hey you'
+                # connect to the peer
+                elif self.group.is_member(to_name):
+                    to_sock = self.logged_name2sock[to_name]
+                    self.group.connect(from_name, to_name)
+                    the_guys = self.group.list_me(from_name)
+                    msg = M_GAME + 'ok'
+                    for g in the_guys[1:]:
+                        to_sock = self.logged_name2sock[g]
+                        mysend(to_sock, M_GAME + from_name)
+                else:
+                    msg = M_GAME + 'no_user'
                 mysend(from_sock, msg)
 #==============================================================================
 # handle message exchange   

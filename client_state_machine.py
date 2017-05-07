@@ -5,6 +5,7 @@ Created on Sun Apr  5 00:00:32 2015
 @author: zhengzhang
 """
 from chat_utils import *
+from reversi import *
 
 class ClientSM:
     def __init__(self, s):
@@ -41,6 +42,22 @@ class ClientSM:
         else:
             self.out_msg += 'User is not online, try again later\n'
         return(False)
+
+    def gaming_with(self, peer):
+        msg = M_GAME + peer
+        mysend(self.s, msg)
+        response = myrecv(self.s)
+        if response == (M_GAME + 'ok'):
+            self.peer = peer
+            self.out_msg += 'You are playing with ' + self.peer + '\n'
+            return True
+        elif response == (M_GAME + 'busy'):
+            self.out_msg += 'User is busy. Please try again later\n'
+        elif response == (M_GAME + 'hey you'):
+            self.out_msg += 'Can\'t play with youself\n'
+        else:
+            self.out_msg += response
+        return False
 
     def disconnect(self):
         msg = M_DISCONNECT
@@ -83,7 +100,16 @@ class ClientSM:
                         self.out_msg += '-----------------------------------\n'
                     else:
                         self.out_msg += 'Connection unsuccessful\n'
-                        
+
+                elif my_msg[0] == 'g':
+                    peer = my_msg[1:]
+                    peer = peer.strip()
+                    if self.gaming_with(peer) == True:
+                        self.state = S_GAMING
+                        self.out_msg += 'Connect to ' + peer + '\n'
+                        self.out_msg += '-----------------------------------\n'
+                    else:
+                        self.out_msg += 'Connection unsuccessful\n'
                 elif my_msg[0] == '?':
                     term = my_msg[1:].strip()
                     mysend(self.s, M_SEARCH + term)
@@ -113,7 +139,13 @@ class ClientSM:
                     self.out_msg += '. Chat away!\n\n'
                     self.out_msg += '------------------------------------\n'
                     self.state = S_CHATTING
-                    
+                elif peer_code == M_GAME:
+                    self.peer = peer_msg
+                    self.out_msg += 'Request from ' + self.peer + '\n'
+                    self.out_msg += 'You are playing with ' + self.peer
+                    self.out_msg += '. enjoy gaming!\n\n'
+                    self.out_msg += '------------------------------------\n'
+                    self.state = S_GAMING
 #==============================================================================
 # Start chatting, 'bye' for quit
 # This is event handling instate "S_CHATTING"
@@ -125,6 +157,7 @@ class ClientSM:
                     self.disconnect()
                     self.state = S_LOGGEDIN
                     self.peer = ''
+
             if len(peer_msg) > 0:    # peer's stuff, coming in
                 if peer_code == M_CONNECT:
                     self.out_msg += "(" + peer_msg + " joined)\n"
@@ -138,6 +171,21 @@ class ClientSM:
             # Display the menu again
             if self.state == S_LOGGEDIN:
                 self.out_msg += menu
+
+        elif self.state == S_GAMING:
+            a = base()
+            if len(my_msg) > 0:
+                a.init()
+                a.show()
+                mysend(self.s, M_EXCHANGE + "[" + self.me + "] " + my_msg)
+                print('a\t#$#')
+
+            if len(peer_msg) > 0:    # peer's stuff, coming in
+                a.show()
+                if peer_code == M_GAME:
+                    self.out_msg += "(" + peer_msg + " joined)\n"
+                else:
+                    self.out_msg += peer_msg
 #==============================================================================
 # invalid state                       
 #==============================================================================
