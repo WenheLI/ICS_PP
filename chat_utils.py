@@ -13,6 +13,7 @@ M_POEM      = '8'
 M_TIME      = '9'
 M_GAME = '10'
 M_DEAL = '11'
+M_SHOW = '12'
 
 CHAT_IP = ''
 #CHAT_IP = socket.gethostname()
@@ -25,7 +26,8 @@ menu = "\n++++ Choose one of the following commands\n \
         c _peer_: to connect to the _peer_ and chat\n \
         ? _term_: to search your chat logs where _term_ appears\n \
         p _#_: to get number <#> sonnet\n \
-        q: to leave the chat system\n\n"
+        q: to leave the chat system\n \
+        g _peer_: to connect to the _peer_ and play a game\n\n"
 
 S_OFFLINE   = 0
 S_CONNECTED = 1

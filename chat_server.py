@@ -8,42 +8,44 @@ import indexer
 import pickle as pkl
 from chat_utils import *
 import chat_group as grp
-from random import choice
+from reversi import *
+import re
 
 
 class Server:
     def __init__(self):
-        self.new_clients = [] #list of new sockets of which the user id is not known
-        self.logged_name2sock = {} #dictionary mapping username to socket
-        self.logged_sock2name = {} # dict mapping socket to user name
+        self.new_clients = []  # list of new sockets of which the user id is not known
+        self.logged_name2sock = {}  # dictionary mapping username to socket
+        self.logged_sock2name = {}  # dict mapping socket to user name
         self.all_sockets = []
         self.group = grp.Group()
-        #start server
-        self.server=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # start server
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind(SERVER)
         self.server.listen(5)
         self.all_sockets.append(self.server)
-        #initialize past chat indices
-        self.indices={}
+        # initialize past chat indices
+        self.indices = {}
         # sonnet
         self.sonnet_f = open('AllSonnets.txt.idx', 'rb')
         self.sonnet = pkl.load(self.sonnet_f)
         self.sonnet_f.close()
         # game
-        self.game_base = base()
-        self.game_base.init()
         self.go_first = ''
         self.map = {}
+        self.pattern = re.compile('[0-9],[0-9]')
+        self.game = base()
+        self.count = 0
 
     def new_client(self, sock):
-        #add to all sockets and to new clients
+        # add to all sockets and to new clients
         print('new client...')
         sock.setblocking(0)
         self.new_clients.append(sock)
         self.all_sockets.append(sock)
 
     def login(self, sock):
-        #read the msg that should have login code plus username
+        # read the msg that should have login code plus username
         msg = myrecv(sock)
         if len(msg) > 0:
             code = msg[0]
@@ -51,32 +53,32 @@ class Server:
             if code == M_LOGIN:
                 name = msg[1:]
                 if self.group.is_member(name) != True:
-                    #move socket from new clients list to logged clients
+                    # move socket from new clients list to logged clients
                     self.new_clients.remove(sock)
-                    #add into the name to sock mapping
+                    # add into the name to sock mapping
                     self.logged_name2sock[name] = sock
                     self.logged_sock2name[sock] = name
-                    #load chat history of that user
+                    # load chat history of that user
                     if name not in self.indices.keys():
                         try:
-                            self.indices[name]=pkl.load(open(name+'.idx','rb'))
-                        except IOError: #chat index does not exist, then create one
+                            self.indices[name] = pkl.load(open(name + '.idx', 'rb'))
+                        except IOError:  # chat index does not exist, then create one
                             self.indices[name] = indexer.Index(name)
                     print(name + ' logged in')
                     self.group.join(name)
                     mysend(sock, M_LOGIN + 'ok')
-                else: #a client under this name has already logged in
+                else:  # a client under this name has already logged in
                     mysend(sock, M_LOGIN + 'duplicate')
                     print(name + ' duplicate login attempt')
             else:
-                print ('wrong code received')
-        else: #client died unexpectedly
+                print('wrong code received')
+        else:  # client died unexpectedly
             self.logout(sock)
 
     def logout(self, sock):
-        #remove sock from all lists
+        # remove sock from all lists
         name = self.logged_sock2name[sock]
-        pkl.dump(self.indices[name], open(name + '.idx','wb'))
+        pkl.dump(self.indices[name], open(name + '.idx', 'wb'))
         del self.indices[name]
         del self.logged_name2sock[name]
         del self.logged_sock2name[sock]
@@ -84,11 +86,11 @@ class Server:
         self.group.leave(name)
         sock.close()
 
-#==============================================================================
-# main command switchboard
-#==============================================================================
+    # ==============================================================================
+    # main command switchboard
+    # ==============================================================================
     def handle_msg(self, from_sock):
-        #read msg code
+        # read msg code
         msg = myrecv(from_sock)
         pos = -1
         if len(msg) > 0:
@@ -101,9 +103,9 @@ class Server:
             else:
                 code = msg[0]
 
-#==============================================================================
-# handle connect request
-#==============================================================================
+            # ==============================================================================
+            # handle connect request
+            # ==============================================================================
             if code == M_CONNECT:
                 to_name = msg[1:]
                 from_name = self.logged_sock2name[from_sock]
@@ -132,23 +134,27 @@ class Server:
                     msg = M_GAME + 'hey you'
                 # connect to the peer
                 elif self.group.is_member(to_name):
-
+                    n = 1
                     self.go_first = from_name
                     to_sock = self.logged_name2sock[to_name]
                     self.group.connect(from_name, to_name)
                     the_guys = self.group.list_me(from_name)
                     msg = M_GAME + 'ok'
+                    for g in the_guys:
+                        self.map[g] = pow(-1, n)
+                        n += 1
                     for g in the_guys[1:]:
                         to_sock = self.logged_name2sock[g]
                         mysend(to_sock, M_GAME + from_name)
                 else:
                     msg = M_GAME + 'no_user'
                 mysend(from_sock, msg)
+                the_guys = self.group.list_me(from_name)
 
 
-#==============================================================================
-# handle message exchange
-#==============================================================================
+            # ==============================================================================
+            # handle message exchange
+            # ==============================================================================
             elif code == M_EXCHANGE:
                 from_name = self.logged_sock2name[from_sock]
                 the_guys = self.group.list_me(from_name)
@@ -163,35 +169,46 @@ class Server:
             elif code == M_DEAL:
                 from_name = self.logged_sock2name[from_sock]
                 the_guys = self.group.list_me(from_name)
-                if from_name == self.go_first:
-                    steps = msg[-1:-5:-1].split()
-                    for i in range(len(steps)):
-                        steps[i] = int(steps[i])
-                    pos_p = msg.find('[')
-                    pos_b = msg.find(']')
-                    cha = msg[pos_p+1:pos_b]
-                    res = self.game_base.set_it(self.map[cha], steps[0], steps[1])
-                    for guy in the_guys:
-                        if guy != from_name:
-                            self.go_first = guy
-
+                if 'yes' in msg:
+                    msg = self.game.show_for_server()
                 else:
-                    to_sock = self.logged_name2sock[from_name]
-                    mysend(to_sock, 'not ur turn')
+                    if from_name == self.go_first:
+                        msg = msg.replace(' ', ',')
+                        try:
+                            steps = self.pattern.search(msg).group()
+                            steps = steps.split(',')
+                            for i in range(len(steps)):
+                                steps[i] = int(steps[i]) - 1
+                            if self.game.flap(self.map[self.go_first], steps[1], steps[0]):
+                                for g in the_guys:
+                                    if g != self.go_first:
+                                        self.go_first = g
+                                msg = self.game.show_for_server()
+                            else:
+                                msg = 'wrong please position check again'
+                        except:
+                            msg = 'wrong type of input'
 
+                    else:
+                        msg = 'it\'s' + self.go_first + ' \'s turn'
+                with open('w.txt', 'w') as f:
+                    f.write(msg)
                 for g in the_guys:
                     to_sock = self.logged_name2sock[g]
-                    mysend(to_sock, res)
-#==============================================================================
-#listing available peers
-#==============================================================================
+                    mysend(to_sock, msg)
+
+                    # steps = self.pattern.search(msg).group
+                    # print(steps, '!@#')
+                # ==============================================================================
+                # listing available peers
+                # ==============================================================================
             elif code == M_LIST:
                 from_name = self.logged_sock2name[from_sock]
                 msg = self.group.list_all()
                 mysend(from_sock, msg)
-#==============================================================================
-#retrieve a sonnet
-#==============================================================================
+            # ==============================================================================
+            # retrieve a sonnet
+            # ==============================================================================
             elif code == M_POEM:
                 poem_indx = int(msg[1:])
                 from_name = self.logged_sock2name[from_sock]
@@ -199,15 +216,15 @@ class Server:
                 poem = self.sonnet.get_sect(poem_indx)
                 print('here:\n', poem)
                 mysend(from_sock, M_POEM + poem)
-#==============================================================================
-#time
-#==============================================================================
+            # ==============================================================================
+            # time
+            # ==============================================================================
             elif code == M_TIME:
                 ctime = time.strftime('%d.%m.%y,%H:%M', time.localtime())
                 mysend(from_sock, ctime)
-#==============================================================================
-#search
-#==============================================================================
+            # ==============================================================================
+            # search
+            # ==============================================================================
             elif code == M_SEARCH:
                 term = msg[1:]
                 from_name = self.logged_sock2name[from_sock]
@@ -215,9 +232,9 @@ class Server:
                 search_rslt = (self.indices[from_name].search(term)).strip()
                 print('server side search: ' + search_rslt)
                 mysend(from_sock, M_SEARCH + search_rslt)
-#==============================================================================
-# the "from" guy has had enough (talking to "to")!
-#==============================================================================
+            # ==============================================================================
+            # the "from" guy has had enough (talking to "to")!
+            # ==============================================================================
             elif code == M_DISCONNECT:
                 from_name = self.logged_sock2name[from_sock]
                 the_guys = self.group.list_me(from_name)
@@ -227,38 +244,41 @@ class Server:
                     g = the_guys.pop()
                     to_sock = self.logged_name2sock[g]
                     mysend(to_sock, M_DISCONNECT)
-#==============================================================================
-#the "from" guy really, really has had enough
-#==============================================================================
+                # ==============================================================================
+                # the "from" guy really, really has had enough
+                # ==============================================================================
             elif code == M_LOGOUT:
                 self.logout(from_sock)
         else:
-            #client died unexpectedly
-            self.logout(from_sock)   
+            # client died unexpectedly
+            self.logout(from_sock)
 
-#==============================================================================
-# main loop, loops *forever*
-#==============================================================================
+        # ==============================================================================
+        # main loop, loops *forever*
+        # ==============================================================================
+
     def run(self):
-        print ('starting server...')
-        while(1):
-           read,write,error=select.select(self.all_sockets,[],[])
-           print('checking logged clients..')
-           for logc in list(self.logged_name2sock.values()):
-               if logc in read:
-                   self.handle_msg(logc)
-           print('checking new clients..')
-           for newc in self.new_clients[:]:
-               if newc in read:
-                   self.login(newc)
-           print('checking for new connections..')
-           if self.server in read :
-               #new client request
-               sock, address=self.server.accept()
-               self.new_client(sock)
-           
+        print('starting server...')
+        while (1):
+            read, write, error = select.select(self.all_sockets, [], [])
+            print('checking logged clients..')
+            for logc in list(self.logged_name2sock.values()):
+                if logc in read:
+                    self.handle_msg(logc)
+            print('checking new clients..')
+            for newc in self.new_clients[:]:
+                if newc in read:
+                    self.login(newc)
+            print('checking for new connections..')
+            if self.server in read:
+                # new client request
+                sock, address = self.server.accept()
+                self.new_client(sock)
+
+
 def main():
-    server=Server()
+    server = Server()
     server.run()
+
 
 main()

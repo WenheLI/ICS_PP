@@ -47,7 +47,6 @@ class ClientSM:
         msg = M_GAME + peer
         mysend(self.s, msg)
         response = myrecv(self.s)
-        print('\n' , '*',  response, '*' , '\n', sep = '')
         if response == (M_GAME + 'ok'):
             self.peer = peer
             self.out_msg += 'You are playing with ' + self.peer + '\n'
@@ -93,7 +92,6 @@ class ClientSM:
                     self.out_msg += logged_in
                             
                 elif my_msg[0] == 'c':
-                    print(my_msg)
                     peer = my_msg[1:]
                     peer = peer.strip()
                     if self.connect_to(peer) == True:
@@ -134,7 +132,6 @@ class ClientSM:
                     self.out_msg += menu
                     
             if len(peer_msg) > 0:
-                print('peer:', peer_msg, peer_code)
                 if peer_code == M_CONNECT:
                     self.peer = peer_msg
                     self.out_msg += 'Request from ' + self.peer + '\n'
@@ -146,7 +143,7 @@ class ClientSM:
                     self.peer = peer_msg
                     self.out_msg += 'Request from ' + self.peer + '\n'
                     self.out_msg += 'You are playing with ' + self.peer
-                    self.out_msg += '. enjoy gaming!\n\n'
+                    self.out_msg += '. enjoy gaming!\n\nType yes to confirm\n'
                     self.out_msg += '------------------------------------\n'
                     self.state = S_GAMING
 #==============================================================================
@@ -176,15 +173,10 @@ class ClientSM:
                 self.out_msg += menu
 
         elif self.state == S_GAMING:
-            a = base()
             if len(my_msg) > 0:
-                a.init()
-                a.show()
-                mysend(self.s, M_EXCHANGE + "[" + self.me + "] " + my_msg)
-                print('a\t#$#')
+                mysend(self.s, M_DEAL + "[" + self.me + "] " + my_msg)
 
             if len(peer_msg) > 0:    # peer's stuff, coming in
-                a.show()
                 if peer_code == M_GAME:
                     self.out_msg += "(" + peer_msg + " joined)\n"
                 else:

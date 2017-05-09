@@ -1,6 +1,10 @@
 class base:
     def __init__(self):
         self.m = [[0 for i in range(8)] for x in range(8)]
+        self.m[3][3] = -1
+        self.m[4][3] = 1
+        self.m[3][4] = 1
+        self.m[4][4] = -1
 
     def set_it(self, ele, x_pos, y_pos):
         if not self.is_on_board(x_pos, y_pos) or self.m[x_pos][y_pos] != 0:
@@ -45,11 +49,7 @@ class base:
     def is_on_board(self, x, y):
         return 0 <= x <= 7 and 0 <= y <= 7
 
-    def init(self):
-        self.m[3][3] = -1
-        self.m[4][3] = 1
-        self.m[3][4] = 1
-        self.m[4][4] = -1
+
 
     def flap(self, ele, x, y):
         ans = self.set_it(ele, x, y)
@@ -63,6 +63,7 @@ class base:
             return True
         else:
             return False
+
 
 
 
@@ -100,24 +101,43 @@ class base:
     def show(self):
         for i in range(8):
             if i == 0:
-                print('         ', i + 1, '|    ', end='', sep='')
+                print('Map      ', i + 1, '|    ', end='', sep='')
             else:
                 print(i + 1, '|    ', end='')
         print()
         for x in range(8):
             for y in range(8):
-                if y == 0:
+                if y == 0:\
                     print(x+1, '|     ',  self.m[x][y], end='|     ')
                 else:
                     print(self.m[x][y], end='|     ')
             print()
             print()
+    def show_for_server(self):
+        out = ''
+        for i in range(80):
+            out += ' '
+
+        for i in range(8):
+            if i == 0:
+                out += 'Map \t' + str(i + 1) + '|\t\t'
+            else:
+                out += str(i + 1) + ' |\t\t'
+        out += '\n\n'
+        for x in range(8):
+            for y in range(8):
+                if y == 0:
+                    out += str(x+1) + ' |\t\t' + str(self.m[x][y]) + '|\t\t'
+                else:
+                    out += str(self.m[x][y]) + '|\t\t'
+            out += '\n\n'
+        print(out)
+        return out
 
 
 if __name__ == '__main__':
     a = base()
     count = 0
-    a.init()
     while True:
 
         if count % 2 == 0:
@@ -127,8 +147,9 @@ if __name__ == '__main__':
         a.show()
         x = int(input()) - 1
         y = int(input()) - 1
+
         if a.flap(ele, y, x):
             count += 1
-            # a.show()
+            a.show()
 
         # a.flap()

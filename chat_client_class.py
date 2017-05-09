@@ -14,7 +14,8 @@ class Client:
         self.state = S_OFFLINE
         self.system_msg = ''
         self.local_msg = ''
-        self.peer_msg = ''        
+        self.peer_msg = ''
+
         
     def quit(self):
         self.socket.shutdown(socket.SHUT_RDWR)
@@ -65,7 +66,6 @@ class Client:
                     code += i
                     index += 1
             peer_code = code
-            print('#', peer_code, '#')
             peer_msg = peer_msg[index:]
         return my_msg, peer_code, peer_msg
         
