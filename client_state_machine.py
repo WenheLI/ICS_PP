@@ -47,6 +47,7 @@ class ClientSM:
         msg = M_GAME + peer
         mysend(self.s, msg)
         response = myrecv(self.s)
+        print('\n' , '*',  response, '*' , '\n', sep = '')
         if response == (M_GAME + 'ok'):
             self.peer = peer
             self.out_msg += 'You are playing with ' + self.peer + '\n'
@@ -92,6 +93,7 @@ class ClientSM:
                     self.out_msg += logged_in
                             
                 elif my_msg[0] == 'c':
+                    print(my_msg)
                     peer = my_msg[1:]
                     peer = peer.strip()
                     if self.connect_to(peer) == True:
@@ -104,7 +106,7 @@ class ClientSM:
                 elif my_msg[0] == 'g':
                     peer = my_msg[1:]
                     peer = peer.strip()
-                    if self.gaming_with(peer) == True:
+                    if self.gaming_with(peer):
                         self.state = S_GAMING
                         self.out_msg += 'Connect to ' + peer + '\n'
                         self.out_msg += '-----------------------------------\n'
@@ -132,6 +134,7 @@ class ClientSM:
                     self.out_msg += menu
                     
             if len(peer_msg) > 0:
+                print('peer:', peer_msg, peer_code)
                 if peer_code == M_CONNECT:
                     self.peer = peer_msg
                     self.out_msg += 'Request from ' + self.peer + '\n'

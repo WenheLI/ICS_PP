@@ -12,6 +12,8 @@ M_LIST      = '7'
 M_POEM      = '8'
 M_TIME      = '9'
 M_GAME = '10'
+M_DEAL = '11'
+
 CHAT_IP = ''
 #CHAT_IP = socket.gethostname()
 CHAT_PORT = 1112

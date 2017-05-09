@@ -2,11 +2,14 @@ import time
 import socket
 import select
 import sys
+from reversi import *
 import string
 import indexer
 import pickle as pkl
 from chat_utils import *
 import chat_group as grp
+from random import choice
+
 
 class Server:
     def __init__(self):
@@ -26,7 +29,12 @@ class Server:
         self.sonnet_f = open('AllSonnets.txt.idx', 'rb')
         self.sonnet = pkl.load(self.sonnet_f)
         self.sonnet_f.close()
-        
+        # game
+        self.game_base = base()
+        self.game_base.init()
+        self.go_first = ''
+        self.map = {}
+
     def new_client(self, sock):
         #add to all sockets and to new clients
         print('new client...')
@@ -80,7 +88,7 @@ class Server:
 # main command switchboard
 #==============================================================================
     def handle_msg(self, from_sock):
-        #read msg code 
+        #read msg code
         msg = myrecv(from_sock)
         pos = -1
         if len(msg) > 0:
@@ -101,7 +109,7 @@ class Server:
                 from_name = self.logged_sock2name[from_sock]
                 if to_name == from_name:
                     msg = M_CONNECT + 'hey you'
-                # connect to the peer
+
                 elif self.group.is_member(to_name):
                     to_sock = self.logged_name2sock[to_name]
                     self.group.connect(from_name, to_name)
@@ -115,12 +123,17 @@ class Server:
                 mysend(from_sock, msg)
 
             elif code == M_GAME:
+
                 to_name = msg[2:]
+
                 from_name = self.logged_sock2name[from_sock]
+
                 if to_name == from_name:
                     msg = M_GAME + 'hey you'
                 # connect to the peer
                 elif self.group.is_member(to_name):
+
+                    self.go_first = from_name
                     to_sock = self.logged_name2sock[to_name]
                     self.group.connect(from_name, to_name)
                     the_guys = self.group.list_me(from_name)
@@ -131,8 +144,10 @@ class Server:
                 else:
                     msg = M_GAME + 'no_user'
                 mysend(from_sock, msg)
+
+
 #==============================================================================
-# handle message exchange   
+# handle message exchange
 #==============================================================================
             elif code == M_EXCHANGE:
                 from_name = self.logged_sock2name[from_sock]
@@ -142,8 +157,31 @@ class Server:
                 self.indices[from_name].add_msg_and_index(said2)
                 for g in the_guys[1:]:
                     to_sock = self.logged_name2sock[g]
-                    self.indices[g].add_msg_and_index(said2)                
+                    self.indices[g].add_msg_and_index(said2)
                     mysend(to_sock, msg)
+
+            elif code == M_DEAL:
+                from_name = self.logged_sock2name[from_sock]
+                the_guys = self.group.list_me(from_name)
+                if from_name == self.go_first:
+                    steps = msg[-1:-5:-1].split()
+                    for i in range(len(steps)):
+                        steps[i] = int(steps[i])
+                    pos_p = msg.find('[')
+                    pos_b = msg.find(']')
+                    cha = msg[pos_p+1:pos_b]
+                    res = self.game_base.set_it(self.map[cha], steps[0], steps[1])
+                    for guy in the_guys:
+                        if guy != from_name:
+                            self.go_first = guy
+
+                else:
+                    to_sock = self.logged_name2sock[from_name]
+                    mysend(to_sock, 'not ur turn')
+
+                for g in the_guys:
+                    to_sock = self.logged_name2sock[g]
+                    mysend(to_sock, res)
 #==============================================================================
 #listing available peers
 #==============================================================================

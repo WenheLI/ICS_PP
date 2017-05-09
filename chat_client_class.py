@@ -65,6 +65,7 @@ class Client:
                     code += i
                     index += 1
             peer_code = code
+            print('#', peer_code, '#')
             peer_msg = peer_msg[index:]
         return my_msg, peer_code, peer_msg
         
