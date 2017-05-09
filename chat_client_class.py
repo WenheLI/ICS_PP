@@ -107,6 +107,7 @@ class Client:
     def print_instructions(self):
         self.system_msg += menu
 
+
     def run_chat(self):
         self.init_chat()
         self.system_msg += 'Welcome to ICS chat\n'

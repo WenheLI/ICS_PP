@@ -138,6 +138,7 @@ class base:
 if __name__ == '__main__':
     a = base()
     count = 0
+    #a
     while True:
 
         if count % 2 == 0:
