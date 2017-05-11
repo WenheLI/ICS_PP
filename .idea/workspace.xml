@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc6b308f-273a-444d-bf9d-c44f6aadae37" name="Default" comment="interaction half done">
+    <list default="true" id="cc6b308f-273a-444d-bf9d-c44f6aadae37" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat_utils.py" afterPath="$PROJECT_DIR$/chat_utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client_state_machine.py" afterPath="$PROJECT_DIR$/client_state_machine.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat_server.py" afterPath="$PROJECT_DIR$/chat_server.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reversi.py" afterPath="$PROJECT_DIR$/reversi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +18,7 @@
     <SUITE FILE_PATH="coverage/ICS_PP$webkit.coverage" NAME="webkit Coverage Results" MODIFIED="1494075671999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ICS_PP$client_state_machine.coverage" NAME="client_state_machine Coverage Results" MODIFIED="1494148384620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ICS_PP$chat_server.coverage" NAME="chat_server Coverage Results" MODIFIED="1494490342007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ICS_PP$reversi.coverage" NAME="reversi Coverage Results" MODIFIED="1494490126952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ICS_PP$reversi.coverage" NAME="reversi Coverage Results" MODIFIED="1494494760412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DockManager">
     <window id="1">
@@ -29,7 +28,7 @@
             <file leaf-file-name="client_state_machine.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/client_state_machine.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="348">
+                  <state relative-caret-position="337">
                     <caret line="204" column="37" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
                     <folding>
                       <element signature="e#89#113#0" expanded="true" />
@@ -60,8 +59,8 @@
             <file leaf-file-name="chat_server.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/chat_server.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="296">
-                    <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
+                  <state relative-caret-position="472">
+                    <caret line="273" column="51" lean-forward="true" selection-start-line="273" selection-start-column="51" selection-end-line="273" selection-end-column="51" />
                     <folding>
                       <element signature="e#0#11#0" expanded="true" />
                     </folding>
@@ -92,8 +91,8 @@
       <file leaf-file-name="reversi.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reversi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+            <state relative-caret-position="-2047">
+              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -155,6 +154,8 @@
       <find>print</find>
       <find>yes</find>
       <find>c _peer_: to connect to the _peer_ and chat</find>
+      <find>map = {}</find>
+      <find>map</find>
     </findStrings>
     <replaceStrings>
       <replace>self.m</replace>
@@ -184,10 +185,10 @@
         <option value="$PROJECT_DIR$/w.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/chat_client_class.py" />
-        <option value="$PROJECT_DIR$/chat_server.py" />
-        <option value="$PROJECT_DIR$/reversi.py" />
         <option value="$PROJECT_DIR$/chat_utils.py" />
         <option value="$PROJECT_DIR$/client_state_machine.py" />
+        <option value="$PROJECT_DIR$/chat_server.py" />
+        <option value="$PROJECT_DIR$/reversi.py" />
       </list>
     </option>
   </component>
@@ -280,7 +281,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.chat_cmdl_client">
+  <component name="RunManager" selected="Python.reversi">
     <configuration default="false" name="reversi" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -534,8 +535,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.chat_cmdl_client" />
-        <item index="1" class="java.lang.String" itemvalue="Python.reversi" />
+        <item index="0" class="java.lang.String" itemvalue="Python.reversi" />
+        <item index="1" class="java.lang.String" itemvalue="Python.chat_cmdl_client" />
         <item index="2" class="java.lang.String" itemvalue="Python.client_state_machine" />
         <item index="3" class="java.lang.String" itemvalue="Python.webkit" />
       </list>
@@ -580,17 +581,25 @@
       <option name="project" value="LOCAL" />
       <updated>1494323050451</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update playing with computer">
+      <created>1494490471861</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1494490471861</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="23" width="1045" height="801" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17033494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3319672" sideWeight="0.5078586" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42213115" sideWeight="0.5033493" order="2" side_tool="true" content_ui="tabs" x="99" y="568" width="1018" height="241" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42213115" sideWeight="0.5033493" order="2" side_tool="true" content_ui="tabs" x="99" y="568" width="1018" height="241" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -629,7 +638,8 @@
     <MESSAGE value="interaction half done" />
     <MESSAGE value="fix with the gaming connection" />
     <MESSAGE value="done with the basic function" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with the basic function" />
+    <MESSAGE value="update playing with computer" />
+    <option name="LAST_COMMIT_MESSAGE" value="update playing with computer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -942,16 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat_server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chat_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -959,14 +959,6 @@
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reversi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -978,14 +970,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chat_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="273" column="51" lean-forward="true" selection-start-line="273" selection-start-column="51" selection-end-line="273" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client_state_machine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
+        <state relative-caret-position="337">
           <caret line="204" column="37" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding>
             <element signature="e#89#113#0" expanded="true" />
             <marker date="1494490273000" expanded="true" signature="8572:8600" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reversi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2047">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

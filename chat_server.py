@@ -141,8 +141,10 @@ class Server:
                     the_guys = self.group.list_me(from_name)
                     msg = M_GAME + 'ok'
                     for g in the_guys:
-                        self.map[g] = pow(-1, n)
-                        n += 1
+                        if not self.map:
+                            self.map[g] = '●'
+                        else:
+                            self.map[g] = '○'
                     for g in the_guys[1:]:
                         to_sock = self.logged_name2sock[g]
                         mysend(to_sock, M_GAME + from_name)

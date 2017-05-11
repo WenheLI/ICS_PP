@@ -3,21 +3,22 @@ import random
 
 class base:
     def __init__(self):
-        self.m = [[0 for i in range(8)] for x in range(8)]
-        self.m[3][3] = -1
-        self.m[4][3] = 1
-        self.m[3][4] = 1
-        self.m[4][4] = -1
+        self.m = [[' ' for i in range(8)] for x in range(8)]
+        self.m[3][3] = '●'
+        self.m[4][3] = '○'
+        self.m[3][4] = '○'
+        self.m[4][4] = '●'
+        self.to = ['●', '○']
         self.score = {1:0, -1:0}
 
     def set_it(self, ele, x_pos, y_pos):
-        if not self.is_on_board(x_pos, y_pos) or self.m[x_pos][y_pos] != 0:
+        if not self.is_on_board(x_pos, y_pos) or self.m[x_pos][y_pos] != ' ':
             return False
 
         self.m[x_pos][y_pos] = ele
-
-        other_tile = -1 * ele
-
+        for i in self.to:
+            if i != ele:
+                other_tile = i
         tot_flip = []
         for x_delta, y_delta in [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]:
             x, y = x_pos, y_pos
@@ -42,7 +43,7 @@ class base:
                         if x == x_pos and y == y_pos:
                             break
                         tot_flip.append([x, y])
-        self.m[x_pos][y_pos] = 0
+        self.m[x_pos][y_pos] = ' '
 
         if len(tot_flip) == 0:
             return False
@@ -55,6 +56,7 @@ class base:
 
     def flap(self, ele, x, y):
         ans = self.set_it(ele, x, y)
+        print(ans)
         r = -1 * ans
         if ans:
             print(ans)
@@ -136,7 +138,7 @@ class base:
         score = {}
         for x in range(8):
             for y in range(8):
-                if self.m[x][y] == 0:
+                if self.m[x][y] == ' ':
                     res = self.set_it(ele, x, y)
                     if res:
                         l = len(res)
@@ -168,7 +170,7 @@ class base:
 if __name__ == '__main__':
     a = base()
     count = 0
-    ele = 1
+    ele = '○'
     while True:
 
         a.show()
@@ -179,10 +181,15 @@ if __name__ == '__main__':
             count += 1
             a.show()
             if count % 2 == 0:
-                ele = 1
+                ele = '○'
             else:
-                ele = -1
+                ele = '●'
             a.ai(ele)
+            count += 1
+            if count % 2 == 0:
+                ele = '○'
+            else:
+                ele = '●'
 
 
 
