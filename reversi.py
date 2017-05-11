@@ -1,3 +1,6 @@
+import random
+
+
 class base:
     def __init__(self):
         self.m = [[0 for i in range(8)] for x in range(8)]
@@ -5,6 +8,7 @@ class base:
         self.m[4][3] = 1
         self.m[3][4] = 1
         self.m[4][4] = -1
+        self.score = {1:0, -1:0}
 
     def set_it(self, ele, x_pos, y_pos):
         if not self.is_on_board(x_pos, y_pos) or self.m[x_pos][y_pos] != 0:
@@ -12,19 +16,19 @@ class base:
 
         self.m[x_pos][y_pos] = ele
 
-        otherTile = -1 * ele
+        other_tile = -1 * ele
 
         tot_flip = []
         for x_delta, y_delta in [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]:
             x, y = x_pos, y_pos
             x += x_delta
             y += y_delta
-            if self.is_on_board(x, y) and self.m[x][y] == otherTile:
+            if self.is_on_board(x, y) and self.m[x][y] == other_tile:
                 x += x_delta
                 y += y_delta
                 if not self.is_on_board(x, y):
                     continue
-                while self.m[x][y] == otherTile:
+                while self.m[x][y] == other_tile:
                     x += x_delta
                     y += y_delta
                     if not self.is_on_board(x, y):
@@ -49,8 +53,6 @@ class base:
     def is_on_board(self, x, y):
         return 0 <= x <= 7 and 0 <= y <= 7
 
-
-
     def flap(self, ele, x, y):
         ans = self.set_it(ele, x, y)
         r = -1 * ans
@@ -63,12 +65,6 @@ class base:
             return True
         else:
             return False
-
-
-
-
-
-
             # def flap(self):
 
             # state = False
@@ -107,12 +103,13 @@ class base:
         print()
         for x in range(8):
             for y in range(8):
-                if y == 0:\
-                    print(x+1, '|     ',  self.m[x][y], end='|     ')
+                if y == 0: \
+                        print(x + 1, '|     ', self.m[x][y], end='|     ')
                 else:
                     print(self.m[x][y], end='|     ')
             print()
             print()
+
     def show_for_server(self):
         out = ''
         for i in range(80):
@@ -127,24 +124,53 @@ class base:
         for x in range(8):
             for y in range(8):
                 if y == 0:
-                    out += str(x+1) + ' |\t\t' + str(self.m[x][y]) + '|\t\t'
+                    out += str(x + 1) + ' |\t\t' + str(self.m[x][y]) + '|\t\t'
                 else:
                     out += str(self.m[x][y]) + '|\t\t'
             out += '\n\n'
         print(out)
         return out
 
+    def check_win(self, ele):
+        ans = {}
+        score = {}
+        for x in range(8):
+            for y in range(8):
+                if self.m[x][y] == 0:
+                    res = self.set_it(ele, x, y)
+                    if res:
+                        l = len(res)
+                        if l in ans:
+                            ans[l].append((x, y))
+                        else:
+                            ans[l] = [(x, y)]
+                elif self.m[x][y] == 1:
+                    self.score[1] += 1
+                elif self.m[x][y] == -1:
+                    self.score[-1] += 1
+        if score:
+            winner = max(self.score)
+            return ans, winner
+        else:
+
+            return ans
+
+    def ai(self, ele):
+        res = self.check_win(ele)
+        if res:
+            a = max(res.keys())
+            ans = random.choice(res[a])
+            self.flap(ele, ans[0], ans[1])
+        else:
+            return False
+
 
 if __name__ == '__main__':
     a = base()
     count = 0
-    #a
+    ele = 1
     while True:
 
-        if count % 2 == 0:
-            ele = 1
-        else:
-            ele = -1
         a.show()
         x = int(input()) - 1
         y = int(input()) - 1
@@ -152,5 +178,12 @@ if __name__ == '__main__':
         if a.flap(ele, y, x):
             count += 1
             a.show()
+            if count % 2 == 0:
+                ele = 1
+            else:
+                ele = -1
+            a.ai(ele)
 
-        # a.flap()
+
+
+            # a.flap()

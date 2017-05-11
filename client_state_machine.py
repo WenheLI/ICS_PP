@@ -14,6 +14,7 @@ class ClientSM:
         self.me = ''
         self.out_msg = ''
         self.s = s
+        self.game = base()
 
     def set_state(self, state):
         self.state = state
@@ -54,7 +55,8 @@ class ClientSM:
         elif response == (M_GAME + 'busy'):
             self.out_msg += 'User is busy. Please try again later\n'
         elif response == (M_GAME + 'hey you'):
-            self.out_msg += 'Can\'t play with youself\n'
+            self.out_msg += 'Play with the AI\n'
+            self.state = S_SOLO
         else:
             self.out_msg += response
         return False
@@ -175,12 +177,45 @@ class ClientSM:
         elif self.state == S_GAMING:
             if len(my_msg) > 0:
                 mysend(self.s, M_DEAL + "[" + self.me + "] " + my_msg)
+                if my_msg == 'bye':
+                    self.disconnect()
+                    self.state = S_LOGGEDIN
+                    self.peer = ''
 
             if len(peer_msg) > 0:    # peer's stuff, coming in
                 if peer_code == M_GAME:
                     self.out_msg += "(" + peer_msg + " joined)\n"
                 else:
                     self.out_msg += peer_msg
+            if peer_code == M_DISCONNECT:
+                self.state = S_LOGGEDIN
+            if self.state == S_LOGGEDIN:
+                self.out_msg += menu
+
+
+        elif self.state == S_SOLO:
+            count = 0
+            ele = 1
+
+            while True:
+
+                self.game.show()
+                get = input()
+                if get == 'bye':
+                    self.state = S_LOGGEDIN
+                    break
+                x = int(get[0]) - 1
+                y = int(get[-1]) - 1
+                if self.game.flap(ele, y, x):
+                    count += 1
+                    self.game.show()
+                    if count % 2 == 0:
+                        ele = 1
+                    else:
+                        ele = -1
+                    self.game.ai(ele)
+                    count += 1
+
 #==============================================================================
 # invalid state                       
 #==============================================================================

@@ -14,6 +14,8 @@ M_TIME      = '9'
 M_GAME = '10'
 M_DEAL = '11'
 M_SHOW = '12'
+M_SOLO = '13'
+
 
 CHAT_IP = ''
 #CHAT_IP = socket.gethostname()
@@ -34,6 +36,8 @@ S_CONNECTED = 1
 S_LOGGEDIN  = 2
 S_CHATTING  = 3
 S_GAMING = 4
+S_SOLO = 5
+
 
 SIZE_SPEC = 5
 
