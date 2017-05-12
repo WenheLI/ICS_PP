@@ -200,7 +200,7 @@ class ClientSM:
             while True:
 
                 self.game.show()
-                get = input()
+                get = input('enter the position >>>')
                 if get == 'bye':
                     self.state = S_LOGGEDIN
                     break
