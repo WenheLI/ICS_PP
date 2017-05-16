@@ -4,6 +4,8 @@
     <list default="true" id="cc6b308f-273a-444d-bf9d-c44f6aadae37" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat_server.py" afterPath="$PROJECT_DIR$/chat_server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat_utils.py" afterPath="$PROJECT_DIR$/chat_utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client_state_machine.py" afterPath="$PROJECT_DIR$/client_state_machine.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reversi.py" afterPath="$PROJECT_DIR$/reversi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,36 +16,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ICS_PP$chat_cmdl_client.coverage" NAME="chat_cmdl_client Coverage Results" MODIFIED="1494490350442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ICS_PP$chat_cmdl_client.coverage" NAME="chat_cmdl_client Coverage Results" MODIFIED="1494922030989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ICS_PP$webkit.coverage" NAME="webkit Coverage Results" MODIFIED="1494075671999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ICS_PP$client_state_machine.coverage" NAME="client_state_machine Coverage Results" MODIFIED="1494148384620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ICS_PP$chat_server.coverage" NAME="chat_server Coverage Results" MODIFIED="1494490342007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ICS_PP$reversi.coverage" NAME="reversi Coverage Results" MODIFIED="1494494760412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ICS_PP$client_state_machine.coverage" NAME="client_state_machine Coverage Results" MODIFIED="1494919850877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ICS_PP$chat_server.coverage" NAME="chat_server Coverage Results" MODIFIED="1494922022275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ICS_PP$reversi.coverage" NAME="reversi Coverage Results" MODIFIED="1494520527526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DockManager">
     <window id="1">
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="client_state_machine.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/client_state_machine.py">
+            <file leaf-file-name="chat_utils.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/chat_utils.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="337">
-                    <caret line="204" column="37" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+                  <state relative-caret-position="-90">
+                    <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="23" />
                     <folding>
-                      <element signature="e#89#113#0" expanded="true" />
-                      <marker date="1494490273000" expanded="true" signature="8572:8600" ph="..." />
+                      <element signature="e#0#13#0" expanded="true" />
                     </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="chat_cmdl_client.py" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/chat_cmdl_client.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="90">
-                    <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-                    <folding />
                   </state>
                 </provider>
               </entry>
@@ -56,25 +47,26 @@
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="chat_server.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/chat_server.py">
+            <file leaf-file-name="client_state_machine.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/client_state_machine.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="472">
-                    <caret line="273" column="51" lean-forward="true" selection-start-line="273" selection-start-column="51" selection-end-line="273" selection-end-column="51" />
+                  <state relative-caret-position="2730">
+                    <caret line="183" column="34" lean-forward="false" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
                     <folding>
-                      <element signature="e#0#11#0" expanded="true" />
+                      <element signature="e#89#113#0" expanded="true" />
+                      <marker date="1494912011000" expanded="true" signature="8817:8845" ph="..." />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="chat_utils.py" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/chat_utils.py">
+            <file leaf-file-name="chat_server.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/chat_server.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="555">
-                    <caret line="38" column="10" lean-forward="false" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+                  <state relative-caret-position="-1418">
+                    <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="31" />
                     <folding>
-                      <element signature="e#0#13#0" expanded="true" />
+                      <element signature="e#0#11#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -88,11 +80,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reversi.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reversi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reversi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2047">
-              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="2010">
+              <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chat_group.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chat_group.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="75" column="23" lean-forward="true" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -101,8 +103,8 @@
       <file leaf-file-name="chat_client_class.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_client_class.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1470">
-              <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding>
                 <element signature="e#2917#2958#0" expanded="false" />
               </folding>
@@ -113,8 +115,8 @@
       <file leaf-file-name="chat_cmdl_client.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat_cmdl_client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+            <state relative-caret-position="120">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -185,9 +187,9 @@
         <option value="$PROJECT_DIR$/w.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/chat_client_class.py" />
-        <option value="$PROJECT_DIR$/chat_utils.py" />
         <option value="$PROJECT_DIR$/client_state_machine.py" />
         <option value="$PROJECT_DIR$/chat_server.py" />
+        <option value="$PROJECT_DIR$/chat_utils.py" />
         <option value="$PROJECT_DIR$/reversi.py" />
       </list>
     </option>
@@ -236,7 +238,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,7 +253,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,7 +283,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.reversi">
+  <component name="RunManager" selected="Python.chat_cmdl_client">
     <configuration default="false" name="reversi" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -535,9 +537,9 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.reversi" />
-        <item index="1" class="java.lang.String" itemvalue="Python.chat_cmdl_client" />
-        <item index="2" class="java.lang.String" itemvalue="Python.client_state_machine" />
+        <item index="0" class="java.lang.String" itemvalue="Python.chat_cmdl_client" />
+        <item index="1" class="java.lang.String" itemvalue="Python.client_state_machine" />
+        <item index="2" class="java.lang.String" itemvalue="Python.reversi" />
         <item index="3" class="java.lang.String" itemvalue="Python.webkit" />
       </list>
     </recent_temporary>
@@ -588,22 +590,36 @@
       <option name="project" value="LOCAL" />
       <updated>1494490471861</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="beauty the base">
+      <created>1494499537528</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1494499537528</updated>
+    </task>
+    <task id="LOCAL-00007" summary="beauty output">
+      <created>1494628646617</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1494628646617</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="23" width="1045" height="801" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17033494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3319672" sideWeight="0.5078586" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42213115" sideWeight="0.5033493" order="2" side_tool="true" content_ui="tabs" x="99" y="568" width="1018" height="241" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17033494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.49665073" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -613,7 +629,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -639,7 +654,9 @@
     <MESSAGE value="fix with the gaming connection" />
     <MESSAGE value="done with the basic function" />
     <MESSAGE value="update playing with computer" />
-    <option name="LAST_COMMIT_MESSAGE" value="update playing with computer" />
+    <MESSAGE value="beauty the base" />
+    <MESSAGE value="beauty output" />
+    <option name="LAST_COMMIT_MESSAGE" value="beauty output" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -664,7 +681,7 @@
           <caret line="123" column="26" lean-forward="false" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
           <folding>
             <element signature="e#89#113#0" expanded="true" />
-            <marker date="1494490273000" expanded="true" signature="8572:8600" ph="..." />
+            <marker date="1494912011000" expanded="true" signature="8817:8845" ph="..." />
           </folding>
         </state>
       </provider>
@@ -689,7 +706,7 @@
           <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="e#89#113#0" expanded="true" />
-            <marker date="1494490273000" expanded="true" signature="8572:8600" ph="..." />
+            <marker date="1494912011000" expanded="true" signature="8817:8845" ph="..." />
           </folding>
         </state>
       </provider>
@@ -723,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,14 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/w.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -931,7 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -942,59 +949,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat_client_class.py">
+    <entry file="file://$PROJECT_DIR$/client_state_machine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        <state relative-caret-position="2730">
+          <caret line="183" column="34" lean-forward="false" selection-start-line="183" selection-start-column="34" selection-end-line="183" selection-end-column="34" />
           <folding>
-            <element signature="e#2917#2958#0" expanded="false" />
+            <element signature="e#89#113#0" expanded="true" />
+            <marker date="1494912011000" expanded="true" signature="8817:8845" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chat_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="38" column="10" lean-forward="false" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+        <state relative-caret-position="-90">
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chat_cmdl_client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chat_server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="273" column="51" lean-forward="true" selection-start-line="273" selection-start-column="51" selection-end-line="273" selection-end-column="51" />
+        <state relative-caret-position="-1418">
+          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="31" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client_state_machine.py">
+    <entry file="file://$PROJECT_DIR$/reversi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="204" column="37" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+        <state relative-caret-position="2010">
+          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat_cmdl_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat_client_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding>
-            <element signature="e#89#113#0" expanded="true" />
-            <marker date="1494490273000" expanded="true" signature="8572:8600" ph="..." />
+            <element signature="e#2917#2958#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reversi.py">
+    <entry file="file://$PROJECT_DIR$/chat_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2047">
-          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        <state relative-caret-position="1125">
+          <caret line="75" column="23" lean-forward="true" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
           <folding />
         </state>
       </provider>

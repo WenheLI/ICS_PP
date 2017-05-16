@@ -133,8 +133,9 @@ class Server:
                 if to_name == from_name:
                     msg = M_GAME + 'hey you'
                 # connect to the peer
+                elif len(self.group.list_me(to_name)) > 2:
+                    msg = M_GAME + 'busy'
                 elif self.group.is_member(to_name):
-                    n = 1
                     self.go_first = from_name
                     to_sock = self.logged_name2sock[to_name]
                     self.group.connect(from_name, to_name)
@@ -186,6 +187,8 @@ class Server:
                                     if g != self.go_first:
                                         self.go_first = g
                                 msg = self.game.show_for_server()
+                                # winner = self.game.check_finsh()
+                                # msg += '\n' + winner
                             else:
                                 msg = 'wrong please position check again'
                         except:

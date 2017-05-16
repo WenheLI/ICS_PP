@@ -114,7 +114,7 @@ class base:
 
     def show_for_server(self):
         out = ''
-        for i in range(16		 ):
+        for i in range(16):
             out += ' '
 
         for i in range(8):
@@ -146,10 +146,10 @@ class base:
                             ans[l].append((x, y))
                         else:
                             ans[l] = [(x, y)]
-                elif self.m[x][y] == 1:
-                    self.score[1] += 1
-                elif self.m[x][y] == -1:
-                    self.score[-1] += 1
+                elif self.m[x][y] == '●':
+                    self.score['●'] += 1
+                elif self.m[x][y] == '○':
+                    self.score['○'] += 1
         if score:
             winner = max(self.score)
             return ans, winner
@@ -165,6 +165,22 @@ class base:
             self.flap(ele, ans[0], ans[1])
         else:
             return False
+
+    def check_finsh(self):
+        status = True
+        for x in range(8):
+            for y in range(8):
+                if self.m[x][y] == ' ':
+                    status = False
+                    break
+        if status:
+            if self.m[x][y] == '●':
+                self.score['●'] += 1
+            elif self.m[x][y] == '○':
+                self.score['○'] += 1
+
+        if self.score:
+            return max(self.score)
 
 
 if __name__ == '__main__':

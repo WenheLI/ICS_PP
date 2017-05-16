@@ -17,7 +17,7 @@ M_SHOW = '12'
 M_SOLO = '13'
 
 
-CHAT_IP = ''
+CHAT_IP = '10.209.22.90'
 #CHAT_IP = socket.gethostname()
 CHAT_PORT = 1112
 SERVER = (CHAT_IP, CHAT_PORT)
